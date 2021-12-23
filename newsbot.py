@@ -97,7 +97,9 @@ def sendEmbed(embed):
          urlopen(req)
          #print("Trigger: sendEmbed")
     except Exception as e:
-        print("Error sending embed: "+str(e))
+        #create log file named log.txt
+        with open('log.txt', 'a') as log:
+            log.write(str(e))
         pass
 
 def newnessCheck(post):
@@ -121,7 +123,6 @@ def main():
         subreddit = getSubreddit(reddit, subreddit)
         getSubredditPosts(subreddit)
     return
-
 #run main every 60 seconds
 while True:
     main()
